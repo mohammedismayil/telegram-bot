@@ -46,7 +46,7 @@ def get_url():
 def bop(bot, update):
     url = get_url()
     chat_id = update.message.chat_id
-    bot.send_photo(chat_id=chat_id, photo=url)
+    update.message.bot.send_photo(chat_id=chat_id, photo=url)
 
     # return res["download"], res["upload"], res["ping"]
 
