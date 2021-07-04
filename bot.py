@@ -33,7 +33,10 @@ def speedest(update, context):
     s.download()
     s.upload()
     res = s.results.dict()
-    update.message.reply_text( res["download"] )
+    # update.message.reply_text( res["download"] )
+    s.results.share()
+
+
     # return res["download"], res["upload"], res["ping"]
 
 
