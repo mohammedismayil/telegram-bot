@@ -33,8 +33,8 @@ def speedest(update, context):
     s.download()
     s.upload()
     res = s.results.dict()
-    update.message.reply_text( res["download"], res["upload"], res["ping"])
-    return res["download"], res["upload"], res["ping"]
+    update.message.reply_text( res["download"] )
+    # return res["download"], res["upload"], res["ping"]
 
 
 # Define a few command handlers. These usually take the two arguments update and
