@@ -16,7 +16,8 @@ bot.
 """
 import speedtest
 import logging
-
+import requests
+import re
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 # Enable logging
@@ -37,7 +38,15 @@ def speedest(update, context):
     # res = s.results.dict()
     update.message.reply_text( download_mbs )
     
+def get_url():
+    contents = requests.get('https://random.dog/woof.json').json()    
+    url = contents['url']
+    return url
 
+def bop(bot, update):
+    url = get_url()
+    chat_id = update.message.chat_id
+    bot.send_photo(chat_id=chat_id, photo=url)
 
     # return res["download"], res["upload"], res["ping"]
 
@@ -80,7 +89,7 @@ def main():
     dp.add_handler(CommandHandler("speedtest", speedest))  
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
-
+    dp.add_handler(CommandHandler('bop',bop))
     # log all errors
     dp.add_error_handler(error)
 
