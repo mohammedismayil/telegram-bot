@@ -28,10 +28,10 @@ logger = logging.getLogger(__name__)
 
 def speedest(update, context):
     s = speedtest.Speedtest()
-    s.get_servers()
-    s.get_best_server()
+    # s.get_servers()
+    # s.get_best_server()
     s.download()
-    s.upload()
+    # s.upload()
     # Convert download and upload speeds to megabits per second
     download_mbs = round(s.download() / (10**6), 2)
     # res = s.results.dict()
