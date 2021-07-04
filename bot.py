@@ -32,9 +32,11 @@ def speedest(update, context):
     s.get_best_server()
     s.download()
     s.upload()
-    res = s.results.dict()
-    # update.message.reply_text( res["download"] )
-    s.results.share()
+    # Convert download and upload speeds to megabits per second
+    download_mbs = round(s.download() / (10**6), 2)
+    # res = s.results.dict()
+    update.message.reply_text( download_mbs )
+    
 
 
     # return res["download"], res["upload"], res["ping"]
