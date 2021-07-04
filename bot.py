@@ -43,6 +43,7 @@ def get_url():
     url = contents['url']
     return url
 
+@run_async
 def bop(update,context):
     url = get_url()
     chat_id = update.message.chat_id
