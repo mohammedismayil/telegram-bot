@@ -14,7 +14,7 @@ Basic Echobot example, repeats messages.
 Press Ctrl-C on the command line or send a signal to the process to stop the
 bot.
 """
-
+import speedtest
 import logging
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
@@ -24,6 +24,17 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
+# Speedtest method
+
+def speedest(update, context):
+    s = speedtest.Speedtest()
+    s.get_servers()
+    s.get_best_server()
+    s.download()
+    s.upload()
+    res = s.results.dict()
+    update.message.reply_text( res["download"], res["upload"], res["ping"])
+    return res["download"], res["upload"], res["ping"]
 
 
 # Define a few command handlers. These usually take the two arguments update and
@@ -61,7 +72,7 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
-
+    dp.add_handler(CommandHandler("speedtest", speedest))  
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
 
