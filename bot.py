@@ -43,7 +43,7 @@ def get_url():
     url = contents['url']
     return url
 
-def bop(bot, update):
+def bop(update,context):
     url = get_url()
     chat_id = update.message.chat_id
     update.message.bot.send_photo(chat_id=chat_id, photo=url)
@@ -87,7 +87,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("speedtest", speedest))  
-    dp.add_handler(CommandHandler('bop',bop))
+    dp.add_handler(CommandHandler("bop",bop))
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
     
