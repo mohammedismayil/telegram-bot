@@ -1,4 +1,4 @@
-import bodyParser from "body-parser";
+``````````````````import bodyParser from "body-parser";
 import express from "express";
 import { Telegraf } from "telegraf";
 
@@ -24,7 +24,7 @@ app.use(bodyParser.raw({ type: "application/vnd.custom-type" }));
 app.use(bodyParser.text({ type: "text/html" }));
 
 app.get("/", async (req, res) => {
-  res.json({ Hello: "World" });
+  res.json({ Hello: "World","welcome":"Bot" });
 });
 
 app.listen(port, () => {
