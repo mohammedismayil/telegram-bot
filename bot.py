@@ -15,7 +15,7 @@ Press Ctrl-C on the command line or send a signal to the process to stop the
 bot.
 """
 from telegram.ext.dispatcher import run_async
-import speedtest
+# from speed-test import speedtest
 import logging
 import requests
 import re
@@ -26,19 +26,6 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
-# Speedtest method
-
-def speedest(update, context):
-    s = speedtest.Speedtest()
-    # s.get_servers()
-    # s.get_best_server()
-    # s.download()
-    # s.upload()
-    # Convert download and upload speeds to megabits per second
-    download_mbs = round(s.download() / (10**6), 2)
-    # res = s.results.dict()
-    update.message.reply_text( download_mbs )
-    
 def get_url():
     contents = requests.get('https://random.dog/woof.json').json()    
     url = contents['url']
@@ -80,7 +67,7 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("1763932272:AAH_PuVI0ySxqPxNbLjpN3Rj3XZx49PW7II", use_context=True)
+    updater = Updater("1822481443:AAHHImq89FLw6YRPVedNIUE1pvpuUwfckVY", use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
@@ -88,7 +75,7 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
-    dp.add_handler(CommandHandler("speedtest", speedest))  
+    # dp.add_handler(CommandHandler("speedtest", speedest))  
     dp.add_handler(CommandHandler("bop",bop))
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
