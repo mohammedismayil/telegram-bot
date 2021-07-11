@@ -17,8 +17,8 @@ bot.
 from telegram.ext.dispatcher import run_async
 # from speed-test import speedtest
 import logging
-import requests
-import re
+from requests import requests 
+# import re
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
 
