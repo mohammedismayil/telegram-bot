@@ -20,6 +20,8 @@ import logging
 import requests
 import re
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import os
+
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -67,7 +69,8 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("1822481443:AAHHImq89FLw6YRPVedNIUE1pvpuUwfckVY", use_context=True)
+    print (os.environ)
+    updater = Updater(os.environ["TELEGRAM_TOKEN"], use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
