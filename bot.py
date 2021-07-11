@@ -57,7 +57,6 @@ def help(update, context):
 def echo(update, context):
     """Echo the user message."""
     print(update.message.text)
-    logger.log("ookoko")
     update.message.reply_text(update.message.text)
 
 
