@@ -1,3 +1,3 @@
-web: python3 bot.py
+worker:pip install -r requirements.txt
 
 worker: python3 bot.py 
